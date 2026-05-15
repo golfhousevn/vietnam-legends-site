@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vietnam Legends Society | Nơi Lãnh Đạo Trở Thành Huyền Thoại</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dp:#2D1B4E;--rp:#4A2B7A;--mp:#6B46C1;--lp:#A78BFA;--lav:#C4B5FD;--slav:#E9E2FB;
+  --iv:#FAF9F6;--wh:#FFFFFF;--gd:#D4AF7F;--gdl:#E8D4A8;--td:#1A1033;--tm:#6B5B8B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--iv);color:var(--td);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;transition:all .4s ease}
+nav.scrolled{background:rgba(26,16,51,.88);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(196,181,253,.1)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--wh);letter-spacing:2px}
+.logo span{color:var(--gd)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gd)}
+.nav-cta{padding:10px 22px;border:1px solid var(--gd);color:var(--gd);background:transparent;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none}
+.nav-cta:hover{background:var(--gd);color:var(--dp)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1A1033}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;transition:transform 8s ease}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,16,51,.88) 0%,rgba(45,27,78,.82) 50%,rgba(74,43,122,.72) 100%)}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(167,139,250,.2) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(212,175,127,.12) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:1100px;padding:0 40px}
+.hero-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;border:1px solid rgba(212,175,127,.4);border-radius:100px;margin-bottom:36px;color:var(--gd);font-size:11px;letter-spacing:3px;text-transform:uppercase;background:rgba(212,175,127,.05);opacity:0;animation:fadeUp 1s ease .3s forwards}
+.hero-badge::before,.hero-badge::after{content:'';width:28px;height:1px;background:var(--gd)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7.5vw,100px);font-weight:500;line-height:1.04;color:var(--wh);margin-bottom:28px;letter-spacing:-1px;opacity:0;animation:fadeUp 1.2s ease .5s forwards}
+.hero h1 .gd{color:var(--gd);font-style:italic;font-weight:400}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.78);max-width:680px;margin:0 auto 46px;font-weight:300;letter-spacing:.4px;opacity:0;animation:fadeUp 1.2s ease .8s forwards}
+.hero-meta{display:flex;justify-content:center;align-items:center;gap:36px;margin-bottom:46px;opacity:0;animation:fadeUp 1.2s ease 1s forwards}
+.hero-meta-item{color:rgba(255,255,255,.65);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.hero-meta-div{width:1px;height:18px;background:rgba(255,255,255,.2)}
+.hero-ctas{display:flex;gap:18px;justify-content:center;opacity:0;animation:fadeUp 1.2s ease 1.2s forwards}
+.btn-p{padding:17px 38px;background:var(--gd);color:var(--dp);border:none;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block}
+.btn-p:hover{background:var(--wh);transform:translateY(-2px);box-shadow:0 20px 40px rgba(212,175,127,.3)}
+.btn-s{padding:17px 38px;background:transparent;color:var(--wh);border:1px solid rgba(255,255,255,.35);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:400;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block}
+.btn-s:hover{border-color:var(--wh);background:rgba(255,255,255,.06)}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:0;animation:fadeUp 1.5s ease 1.6s forwards}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,rgba(212,175,127,.8),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* IMG HELPERS */
+.bg-img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* SECTIONS */
+section{padding:130px 60px;position:relative}
+.container{max-width:1380px;margin:0 auto}
+.sec-label{display:inline-flex;align-items:center;gap:14px;color:var(--mp);font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:600;margin-bottom:22px}
+.sec-label::before{content:'';width:36px;height:1px;background:var(--mp)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,62px);font-weight:500;line-height:1.1;color:var(--td);margin-bottom:28px;letter-spacing:-.5px}
+.sec-title .ip{color:var(--mp);font-style:italic}
+.sec-intro{font-size:17px;color:var(--tm);max-width:680px;margin-bottom:72px;line-height:1.75}
+
+/* CINEMATIC STRIP */
+.img-strip{padding:0;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr 1fr}
+.img-strip-item{position:relative;overflow:hidden;cursor:pointer}
+.img-strip-item img{width:100%;height:480px;object-fit:cover;transition:transform .8s ease,filter .5s;filter:brightness(.78)}
+.img-strip-item:hover img{transform:scale(1.06);filter:brightness(.95)}
+.img-strip-caption{position:absolute;bottom:0;left:0;right:0;padding:26px 28px;background:linear-gradient(0deg,rgba(26,16,51,.88),transparent);color:var(--wh);opacity:0;transition:opacity .4s}
+.img-strip-item:hover .img-strip-caption{opacity:1}
+.cap-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gd);margin-bottom:5px}
+.cap-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500}
+
+/* LEGENDS TOUR */
+.legends-tour{background:var(--iv)}
+.tour-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.tour-visual{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;box-shadow:0 40px 100px rgba(74,43,122,.25)}
+.tour-visual img{width:100%;height:100%;object-fit:cover;filter:brightness(.72)}
+.tour-visual-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,16,51,.55) 0%,rgba(45,27,78,.35) 100%)}
+.tour-visual-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:44px}
+.tour-logo{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:4px;color:var(--gd);font-weight:600}
+.tour-vis-stat{font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:500;line-height:1;color:var(--wh)}
+.tour-vis-label{font-size:13px;color:rgba(255,255,255,.72);letter-spacing:2px;text-transform:uppercase;margin-top:10px}
+.tour-partners{display:flex;gap:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18)}
+.tour-partner{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase}
+.tour-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:46px;padding-top:46px;border-top:1px solid rgba(107,70,193,.14)}
+.ts .n{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--mp);line-height:1;margin-bottom:7px}
+.ts .l{font-size:11px;color:var(--tm);letter-spacing:1.5px;text-transform:uppercase}
+
+/* PANORAMA */
+.panorama{padding:0;position:relative;height:520px;overflow:hidden}
+.panorama img{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+.panorama-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,16,51,.7) 0%,rgba(45,27,78,.3) 50%,rgba(26,16,51,.7) 100%)}
+.panorama-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:2;padding:40px}
+.panorama-text blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,50px);font-style:italic;color:var(--wh);line-height:1.25;max-width:880px;margin-bottom:22px}
+.panorama-text cite{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gd)}
+
+/* WHY VN */
+.why-vn{background:linear-gradient(180deg,var(--iv) 0%,var(--slav) 100%);position:relative;overflow:hidden}
+.why-vn::before{content:'VIETNAM';position:absolute;top:50%;left:-5%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:380px;font-weight:600;color:rgba(107,70,193,.03);pointer-events:none;letter-spacing:-10px}
+.why-header{text-align:center;margin-bottom:72px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:60px}
+.why-card{background:var(--wh);padding:46px 30px;border-radius:3px;border-top:3px solid var(--mp);transition:all .4s;position:relative;overflow:hidden}
+.why-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(74,43,122,.15);border-top-color:var(--gd)}
+.why-card .big{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:600;color:var(--dp);line-height:1;margin-bottom:14px}
+.why-card .ttl{font-size:14px;font-weight:600;color:var(--td);margin-bottom:9px}
+.why-card .src{font-size:12px;color:var(--tm);font-style:italic}
+.why-quote{text-align:center;max-width:880px;margin:0 auto;padding:56px 36px}
+.wqm{font-family:'Cormorant Garamond',serif;font-size:110px;color:var(--mp);line-height:.5;opacity:.25;margin-bottom:18px}
+.wqt{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,40px);font-weight:400;font-style:italic;color:var(--dp);line-height:1.3;margin-bottom:28px}
+.wqa{font-size:12px;color:var(--tm);letter-spacing:3px;text-transform:uppercase}
+
+/* GALLERY */
+.gallery-sec{padding:0;background:var(--td)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:300px 300px}
+.gg-item{position:relative;overflow:hidden}
+.gg-item.wide{grid-column:span 2}
+.gg-item.tall{grid-row:span 2}
+.gg-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .5s;filter:brightness(.72) saturate(.9)}
+.gg-item:hover img{transform:scale(1.08);filter:brightness(.9) saturate(1.1)}
+.gg-caption{position:absolute;bottom:0;left:0;right:0;padding:20px 22px;background:linear-gradient(0deg,rgba(26,16,51,.9),transparent);color:var(--wh);transform:translateY(100%);transition:transform .4s ease}
+.gg-item:hover .gg-caption{transform:translateY(0)}
+.gg-caption .tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gd);margin-bottom:5px}
+.gg-caption .name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
+
+/* VISION */
+.vision{background:var(--dp);color:var(--wh);position:relative;overflow:hidden}
+.vision::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 10% 20%,rgba(167,139,250,.14),transparent 40%),radial-gradient(circle at 90% 80%,rgba(212,175,127,.09),transparent 40%)}
+.vision .container{position:relative;z-index:2}
+.vision .sec-label{color:var(--gd)}
+.vision .sec-label::before{background:var(--gd)}
+.vision .sec-title{color:var(--wh)}
+.vision .sec-title .ip{color:var(--gd)}
+.vision .sec-intro{color:rgba(255,255,255,.72)}
+.progs{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.07);margin-top:56px}
+.prog{background:var(--dp);padding:46px 38px;transition:all .4s;cursor:pointer;position:relative}
+.prog:hover{background:var(--rp)}
+.prog-n{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gd);letter-spacing:4px;margin-bottom:28px;font-weight:500}
+.prog h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:14px;color:var(--wh)}
+.prog p{font-size:14px;color:rgba(255,255,255,.62);line-height:1.72}
+.prog-arrow{position:absolute;bottom:28px;right:28px;width:34px;height:34px;border:1px solid rgba(212,175,127,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gd);transition:all .3s;opacity:0}
+.prog:hover .prog-arrow{opacity:1;transform:translate(3px,-3px)}
+
+/* SPONSOR VALUE */
+.sponsor-val{background:var(--iv)}
+.val-header{display:grid;grid-template-columns:1fr 1fr;gap:90px;margin-bottom:72px;align-items:end}
+.val-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.vc{padding:46px;background:var(--wh);border-radius:3px;transition:all .4s;border:1px solid rgba(107,70,193,.07)}
+.vc:hover{transform:translateY(-5px);box-shadow:0 30px 60px rgba(74,43,122,.11);border-color:var(--gd)}
+.vc.feat{grid-column:span 2;background:linear-gradient(135deg,var(--rp),var(--dp));color:var(--wh);padding:56px}
+.vi{width:52px;height:52px;border:1px solid var(--mp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;color:var(--mp)}
+.vc.feat .vi{border-color:var(--gd);color:var(--gd)}
+.vc h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:18px;color:var(--td)}
+.vc.feat h3{color:var(--wh)}
+.vc p{font-size:14px;color:var(--tm);line-height:1.8}
+.vc.feat p{color:rgba(255,255,255,.8)}
+
+/* MEDIA */
+.media-exp{background:linear-gradient(135deg,#1A1033 0%,#2D1B4E 100%);color:var(--wh);position:relative;overflow:hidden}
+.media-exp::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(196,181,253,.07),transparent 70%)}
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.media-exp .sec-label{color:var(--gd)}
+.media-exp .sec-label::before{background:var(--gd)}
+.media-exp .sec-title{color:var(--wh)}
+.media-exp .sec-title .ip{color:var(--gd)}
+.media-content p{font-size:16px;color:rgba(255,255,255,.72);margin-bottom:22px;line-height:1.82}
+.media-stats{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:46px}
+.ms{padding:36px 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:3px;transition:all .3s}
+.ms:hover{background:rgba(212,175,127,.08);border-color:var(--gd)}
+.ms .bn{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--gd);line-height:1;margin-bottom:11px}
+.ms .dc{font-size:12px;color:rgba(255,255,255,.7);line-height:1.5}
+.reach{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.rc{position:absolute;border-radius:50%;border:1px solid rgba(212,175,127,.22);animation:pulse 4s ease-in-out infinite}
+.rc:nth-child(1){width:100%;height:100%}
+.rc:nth-child(2){width:75%;height:75%;animation-delay:.5s}
+.rc:nth-child(3){width:50%;height:50%;animation-delay:1s}
+.rc:nth-child(4){width:25%;height:25%;animation-delay:1.5s}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.02)}}
+.reach-c{position:relative;z-index:2;text-align:center;color:var(--wh)}
+.reach-c .big{font-family:'Cormorant Garamond',serif;font-size:76px;font-weight:600;color:var(--gd);line-height:1}
+.reach-c .lbl{font-size:12px;letter-spacing:2px;margin-top:11px;color:rgba(255,255,255,.8);text-transform:uppercase}
+.rdot{position:absolute;width:8px;height:8px;background:var(--gd);border-radius:50%;box-shadow:0 0 18px var(--gd)}
+
+/* ELITE NETWORK */
+.elite-net{background:var(--iv)}
+.net-header{text-align:center;margin-bottom:72px}
+.net-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:28px}
+.net-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:60px;max-width:900px}
+.nc{background:var(--wh);padding:36px 28px;border-radius:3px;text-align:center;transition:all .4s;border:1px solid rgba(107,70,193,.07);cursor:pointer}
+.nc:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(74,43,122,.14)}
+.nc-avatar{width:96px;height:96px;border-radius:50%;margin:0 auto 22px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--mp),var(--rp));display:flex;align-items:center;justify-content:center;color:var(--wh);font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600}
+.nc-avatar::after{content:'';position:absolute;inset:-4px;border:1px solid var(--gd);border-radius:50%;opacity:0;transition:opacity .3s}
+.nc:hover .nc-avatar::after{opacity:1}
+.nc h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--td);margin-bottom:7px}
+.nc .role{font-size:11px;color:var(--mp);letter-spacing:1px;text-transform:uppercase;font-weight:500;margin-bottom:14px;line-height:1.5}
+.nc .ach{font-size:12px;color:var(--tm);font-style:italic;line-height:1.5}
+.legends-list{text-align:center;padding:54px 36px;background:var(--wh);border-radius:3px;border-top:3px solid var(--gd)}
+.ll-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mp);margin-bottom:22px;font-weight:600}
+.ll-names{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,30px);color:var(--td);line-height:1.55;font-weight:500}
+.ll-names span{color:var(--tm);margin:0 10px}
+
+/* EXPERIENCE */
+.experience{background:linear-gradient(180deg,var(--slav) 0%,var(--iv) 100%)}
+.exp-header{text-align:center;margin-bottom:72px}
+.timeline{position:relative;max-width:980px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--mp),var(--gd),var(--mp));transform:translateX(-50%)}
+.tl-item{display:grid;grid-template-columns:1fr auto 1fr;gap:36px;align-items:center;margin-bottom:46px}
+.tl-c{background:var(--wh);padding:28px;border-radius:3px;box-shadow:0 10px 28px rgba(74,43,122,.07);transition:all .3s}
+.tl-c:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(74,43,122,.12)}
+.tl-item:nth-child(even) .tl-c{grid-column:3}
+.tl-item:nth-child(odd) .tl-c{grid-column:1;text-align:right}
+.tl-marker{width:56px;height:56px;border-radius:50%;background:var(--wh);border:2px solid var(--mp);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--mp);grid-column:2;position:relative;z-index:2;box-shadow:0 0 0 8px var(--slav)}
+.tl-c h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--dp);margin-bottom:7px}
+.tl-c .dt{font-size:10px;color:var(--gd);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-weight:600}
+.tl-c p{font-size:13px;color:var(--tm);line-height:1.72}
+
+/* ECOSYSTEM */
+.ecosystem{background:var(--dp);color:var(--wh);position:relative;overflow:hidden}
+.ecosystem::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(167,139,250,.09),transparent 50%),radial-gradient(circle at 80% 50%,rgba(212,175,127,.07),transparent 50%)}
+.ecosystem .container{position:relative;z-index:2}
+.ecosystem .sec-label{color:var(--gd)}
+.ecosystem .sec-label::before{background:var(--gd)}
+.ecosystem .sec-title{color:var(--wh)}
+.ecosystem .sec-title .ip{color:var(--gd)}
+.eco-header{text-align:center;margin-bottom:72px}
+.hubs{display:flex;justify-content:space-around;align-items:center;margin-bottom:90px;flex-wrap:wrap;gap:36px}
+.hub{text-align:center}
+.hub-c{width:130px;height:130px;border-radius:50%;border:1px solid rgba(212,175,127,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;background:rgba(255,255,255,.03);transition:all .4s}
+.hub.center .hub-c{width:170px;height:170px;background:var(--gd);border-color:var(--gd)}
+.hub:hover .hub-c{border-color:var(--gd);background:rgba(212,175,127,.1);transform:scale(1.05)}
+.hub-nm{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--wh)}
+.hub.center .hub-nm{font-size:32px;color:var(--dp)}
+.hub-reg{font-size:10px;color:rgba(255,255,255,.48);letter-spacing:2px;text-transform:uppercase}
+.hub-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gd),transparent);max-width:90px}
+.ind-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:30px;margin-bottom:46px;color:var(--wh)}
+.ind-title span{color:var(--gd)}
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.05)}
+.ind{background:var(--dp);padding:28px;transition:all .3s}
+.ind:hover{background:var(--rp)}
+.ind-n{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gd);letter-spacing:3px;margin-bottom:14px;font-weight:600}
+.ind h4{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--wh);margin-bottom:9px}
+.ind p{font-size:11px;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* CTA */
+.cta-sec{background:var(--iv);padding:0}
+.cta-banner{position:relative;height:340px;overflow:hidden}
+.cta-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(.5)}
+.cta-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,16,51,.8),rgba(74,43,122,.5));display:flex;align-items:center;justify-content:center}
+.cta-banner-overlay blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,44px);font-style:italic;color:var(--wh);text-align:center;max-width:800px;padding:0 40px}
+.cta-inner{padding:100px 60px}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cta-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,62px);font-weight:500;line-height:1.1;margin-bottom:28px;color:var(--td)}
+.cta-content h2 .it{color:var(--mp);font-style:italic}
+.cta-content p{font-size:16px;color:var(--tm);line-height:1.82;margin-bottom:24px}
+.cta-feats{list-style:none;margin-top:36px}
+.cta-feats li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(107,70,193,.1);color:var(--td);font-size:14px}
+.cta-feats li::before{content:'';width:7px;height:7px;background:var(--gd);border-radius:50%;flex-shrink:0}
+.cta-form{background:var(--wh);padding:56px 46px;border-radius:3px;box-shadow:0 30px 80px rgba(74,43,122,.1);border-top:3px solid var(--gd)}
+.cta-form h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--dp);margin-bottom:10px}
+.cta-form .fsub{font-size:13px;color:var(--tm);margin-bottom:36px}
+.fg{margin-bottom:22px}
+.fg label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);margin-bottom:7px;font-weight:600}
+.fg input,.fg select,.fg textarea{width:100%;padding:13px 0;border:none;border-bottom:1px solid rgba(107,70,193,.2);background:transparent;font-family:'Inter',sans-serif;font-size:14px;color:var(--td);transition:all .3s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-bottom-color:var(--mp)}
+.fg textarea{resize:vertical;min-height:70px}
+.form-sub{width:100%;padding:17px;background:var(--dp);color:var(--wh);border:none;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;margin-top:14px}
+.form-sub:hover{background:var(--gd);color:var(--dp)}
+
+/* FOOTER */
+footer{background:#0F0822;color:rgba(255,255,255,.7);padding:90px 60px 36px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(167,139,250,.07),transparent 50%)}
+.fc{position:relative;z-index:2;max-width:1380px;margin:0 auto}
+.ft{text-align:center;padding-bottom:72px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:56px}
+.fq{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,46px);font-style:italic;color:var(--wh);margin-bottom:28px;line-height:1.3;max-width:860px;margin-left:auto;margin-right:auto}
+.ftags{display:flex;justify-content:center;gap:36px;color:var(--gd);font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:500;flex-wrap:wrap}
+.ftags span{color:rgba(255,255,255,.28)}
+.fb{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;padding-top:16px}
+.fbrand .logo{margin-bottom:14px;display:block}
+.fbrand p{font-size:12px;line-height:1.75;color:rgba(255,255,255,.5);max-width:340px}
+.fcol h5{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gd);margin-bottom:18px;font-weight:600}
+.fcol p,.fcol a{font-size:12px;color:rgba(255,255,255,.55);text-decoration:none;display:block;margin-bottom:9px;transition:color .3s}
+.fcol a:hover{color:var(--gd)}
+.fcopy{text-align:center;padding-top:54px;margin-top:54px;border-top:1px solid rgba(255,255,255,.05);font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.28)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .progs,.ind-grid{grid-template-columns:repeat(2,1fr)}
+  .net-grid{grid-template-columns:repeat(2,1fr)}
+  .net-row2{grid-template-columns:repeat(2,1fr);max-width:none}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .tour-grid,.media-grid,.val-header,.cta-grid{grid-template-columns:1fr;gap:56px}
+  .vc.feat{grid-column:span 2}
+  .fb{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .img-strip{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gg-item.wide{grid-column:span 2}
+  .gg-item.tall{grid-row:span 1}
+}
+@media(max-width:768px){
+  nav,nav.scrolled{padding:14px 18px}
+  section,.cta-inner{padding:72px 18px}
+  footer{padding:56px 18px 28px}
+  .hero-meta{flex-direction:column;gap:14px}
+  .hero-meta-div{display:none}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .why-grid{grid-template-columns:1fr}
+  .val-grid,.ind-grid{grid-template-columns:1fr}
+  .vc.feat{grid-column:span 1}
+  .net-grid,.net-row2{grid-template-columns:1fr}
+  .progs{grid-template-columns:1fr}
+  .tl-item{grid-template-columns:1fr;gap:18px}
+  .timeline::before{left:28px}
+  .tl-item:nth-child(odd) .tl-c,.tl-item:nth-child(even) .tl-c{grid-column:1;text-align:left}
+  .hubs{flex-direction:column}
+  .hub-line{width:1px;height:36px;max-width:none;background:linear-gradient(180deg,transparent,var(--gd),transparent)}
+  .cta-form{padding:36px 24px}
+  .img-strip{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .gg-item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo">VIETNAM <span>LEGENDS</span> SOCIETY</div>
+  <ul class="nav-links">
+    <li><a href="#legends-tour">Giải Đấu</a></li>
+    <li><a href="#why-vn">Việt Nam</a></li>
+    <li><a href="#vision">Tầm Nhìn</a></li>
+    <li><a href="#sponsor">Đồng Hành</a></li>
+    <li><a href="#contact">Liên Hệ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Đăng Ký Tham Gia</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Vietnam Legend Championship · 11 – 16 / 08 / 2026</div>
+    <h1>Nơi Lãnh Đạo<br><span class="gd">Trở Thành Huyền Thoại</span></h1>
+    <p class="hero-sub">Cộng đồng tinh hoa kết nối các nhà lãnh đạo, doanh nhân và nhà đầu tư hàng đầu thông qua ngoại giao Golf đẳng cấp quốc tế — kiến tạo di sản, mở rộng vốn, và xây dựng tương lai Việt Nam.</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">60 Huyền Thoại Golf</span>
+      <span class="hero-meta-div"></span>
+      <span class="hero-meta-item">205M+ Khán Giả Toàn Cầu</span>
+      <span class="hero-meta-div"></span>
+      <span class="hero-meta-item">6 Ngày Đẳng Cấp</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-p">Trở Thành Đối Tác</a>
+      <a href="#vision" class="btn-s">Khám Phá Tầm Nhìn</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- CINEMATIC STRIP -->
+<div class="img-strip">
+  <div class="img-strip-item">
+    <img src="https://picsum.photos/seed/golftournament/900/480" alt="Legends Tour" loading="lazy">
+    <div class="img-strip-caption"><div class="cap-label">Legends Tour</div><div class="cap-text">Huyền thoại trên sân đấu đỉnh cao</div></div>
+  </div>
+  <div class="img-strip-item">
+    <img src="https://picsum.photos/seed/bizleaders/700/480" alt="Business Networking" loading="lazy">
+    <div class="img-strip-caption"><div class="cap-label">Business Diplomacy</div><div class="cap-text">Nơi lãnh đạo gặp nhau</div></div>
+  </div>
+  <div class="img-strip-item">
+    <img src="https://picsum.photos/seed/luxgala/700/480" alt="Gala Dinner" loading="lazy">
+    <div class="img-strip-caption"><div class="cap-label">Legends Gala</div><div class="cap-text">Đêm dạ tiệc đẳng cấp thế giới</div></div>
+  </div>
+</div>
+
+<!-- LEGENDS TOUR -->
+<section class="legends-tour" id="legends-tour">
+  <div class="container">
+    <div class="tour-grid">
+      <div class="tour-visual reveal">
+        <img src="https://picsum.photos/seed/golfresort/800/1000" alt="Championship golf course">
+        <div class="tour-visual-overlay"></div>
+        <div class="tour-visual-content">
+          <div class="tour-logo">LEGENDS TOUR</div>
+          <div>
+            <div class="tour-vis-stat">60</div>
+            <div class="tour-vis-label">Huyền Thoại Đẳng Cấp Thế Giới</div>
+          </div>
+          <div class="tour-partners">
+            <span class="tour-partner">Staysure</span>
+            <span class="tour-partner">PGA Seniors</span>
+            <span class="tour-partner">European Tour</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="sec-label">Legends Tour Là Gì</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.5vw,54px);font-weight:500;line-height:1.1;margin-bottom:28px;color:var(--td)">Sân Khấu Của Những<br><em style="color:var(--mp)">Huyền Thoại Đích Thực</em></h2>
+        <p style="font-size:16px;color:var(--tm);margin-bottom:20px;line-height:1.82">Legends Tour là giải đấu chính thức thuộc European Tour Group, quy tụ những huyền thoại từng vô địch Major Championships, Ryder Cup và các giải đấu danh giá nhất thế giới.</p>
+        <p style="font-size:16px;color:var(--tm);margin-bottom:20px;line-height:1.82">Vietnam Legends Festival 2026 lần đầu tiên đưa giải đấu đẳng cấp này đến Việt Nam, với sự góp mặt của những tên tuổi vĩ đại: Colin Montgomerie, Paul McGinley, John Daly, Ian Woosnam, Paul Lawrie, Peter Baker và nhiều huyền thoại khác.</p>
+        <div class="tour-stats">
+          <div class="ts"><div class="n">60</div><div class="l">Huyền thoại Golf</div></div>
+          <div class="ts"><div class="n">205M+</div><div class="l">TV Reach/năm</div></div>
+          <div class="ts"><div class="n">12M+</div><div class="l">Staysure Network</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PANORAMA -->
+<div class="panorama">
+  <img src="https://picsum.photos/seed/golfpanorama/1920/520" alt="Golf course panorama">
+  <div class="panorama-overlay"></div>
+  <div class="panorama-text">
+    <blockquote>"Golf is the closest game to the game we call life — you get bad breaks from good shots; you get good breaks from bad shots — but you have to play the ball where it lies."</blockquote>
+    <cite>— Bobby Jones · Golf Legend</cite>
+  </div>
+</div>
+
+<!-- WHY VIETNAM -->
+<section class="why-vn" id="why-vn">
+  <div class="container">
+    <div class="why-header reveal">
+      <div class="sec-label">Vì Sao Là Việt Nam — Vì Sao Là Lúc Này</div>
+      <h2 class="sec-title">Việt Nam Đã <em class="ip">Sẵn Sàng</em></h2>
+      <p class="sec-intro" style="margin:0 auto">Khi Dubai bắt đầu hành trình golf diplomacy năm 2003, không ai dự đoán được vị thế hôm nay. Việt Nam đang đứng ngay tại thời khắc lịch sử ấy — với mọi yếu tố hội tụ.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="big">9</div><div class="ttl">Năm liên tiếp là Điểm đến Golf tốt nhất Châu Á</div><div class="src">World Golf Awards · 2017–2025</div></div>
+      <div class="why-card reveal"><div class="big">279%</div><div class="ttl">Tăng trưởng số lượng golfer năm 2024</div><div class="src">Top đầu thế giới · R&A Golf 2024</div></div>
+      <div class="why-card reveal"><div class="big">$38.2B</div><div class="ttl">FDI đăng ký vào Việt Nam năm 2024</div><div class="src">Bộ Kế hoạch & Đầu tư</div></div>
+      <div class="why-card reveal"><div class="big">75M</div><div class="ttl">Tầng lớp trung lưu vào năm 2030</div><div class="src">McKinsey Global Institute</div></div>
+    </div>
+    <div class="why-quote reveal">
+      <div class="wqm">"</div>
+      <div class="wqt">Việt Nam đang đứng ở vị thế mà Dubai từng đứng năm 2003 — với 80+ sân golf đẳng cấp quốc tế, vốn FDI kỷ lục, và một thế hệ lãnh đạo sẵn sàng kiến tạo di sản toàn cầu.</div>
+      <div class="wqa">— Phân Tích Chiến Lược · Vietnam Legends Society</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<div class="gallery-sec">
+  <div class="gallery-grid">
+    <div class="gg-item wide tall">
+      <img src="https://picsum.photos/seed/luxuryclub1/1000/600" alt="Luxury private golf club">
+      <div class="gg-caption"><div class="tag">Private Club</div><div class="name">The Legends Clubhouse</div></div>
+    </div>
+    <div class="gg-item">
+      <img src="https://picsum.photos/seed/awardceremony/700/300" alt="Award ceremony">
+      <div class="gg-caption"><div class="tag">Trophy Ceremony</div><div class="name">Khoảnh Khắc Lịch Sử</div></div>
+    </div>
+    <div class="gg-item">
+      <img src="https://picsum.photos/seed/execnetwork/700/300" alt="Executive networking">
+      <div class="gg-caption"><div class="tag">Leadership Network</div><div class="name">Kết Nối Đỉnh Cao</div></div>
+    </div>
+    <div class="gg-item">
+      <img src="https://picsum.photos/seed/grandvenue/700/300" alt="Luxury resort venue">
+      <div class="gg-caption"><div class="tag">Luxury Venue</div><div class="name">Không Gian Đẳng Cấp</div></div>
+    </div>
+    <div class="gg-item">
+      <img src="https://picsum.photos/seed/boardtable/700/300" alt="Leaders meeting">
+      <div class="gg-caption"><div class="tag">Legends Table</div><div class="name">Cuộc Đối Thoại Tinh Hoa</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:56px">
+      <div class="sec-label">Tầm Nhìn Vietnam Legends Society</div>
+      <h2 class="sec-title">Không Chỉ Là Một Giải Đấu —<br><em class="ip">Một Cộng Đồng Kiến Tạo Di Sản</em></h2>
+      <p class="sec-intro" style="margin:0 auto;color:rgba(255,255,255,.72)">Sáu chương trình cốt lõi tạo nên hệ sinh thái độc đáo, nơi golf trở thành cầu nối giữa lãnh đạo, vốn và tương lai.</p>
+    </div>
+    <div class="progs">
+      <div class="prog reveal"><div class="prog-n">01</div><h3>The Legends Table</h3><p>Private leadership tea — không gian giới hạn dành cho những cuộc đối thoại cấp cao nhất, nơi các quyết định lớn được hình thành.</p><div class="prog-arrow">→</div></div>
+      <div class="prog reveal"><div class="prog-n">02</div><h3>Legends Dialogue</h3><p>Đối thoại chiến lược giữa doanh nhân hàng đầu và chính khách — định hình các xu hướng kinh tế khu vực và toàn cầu.</p><div class="prog-arrow">→</div></div>
+      <div class="prog reveal"><div class="prog-n">03</div><h3>Capital Circle</h3><p>Cộng đồng Investment & Family Office — kết nối dòng vốn quốc tế với cơ hội đầu tư chiến lược tại Việt Nam và ASEAN.</p><div class="prog-arrow">→</div></div>
+      <div class="prog reveal"><div class="prog-n">04</div><h3>Executive Golf</h3><p>Golf kết nối lãnh đạo — nơi các đối tác chiến lược gặp nhau trên sân, xây dựng quan hệ vượt khỏi khuôn khổ phòng họp.</p><div class="prog-arrow">→</div></div>
+      <div class="prog reveal"><div class="prog-n">05</div><h3>International Forum</h3><p>Diễn đàn quốc tế kết nối Trung Đông, Châu Âu và Châu Á — đưa lãnh đạo Việt Nam đến với mạng lưới toàn cầu.</p><div class="prog-arrow">→</div></div>
+      <div class="prog reveal"><div class="prog-n">06</div><h3>Legends Tour VN</h3><p>Đưa Việt Nam lên bản đồ golf thế giới — kiến tạo di sản dài hạn cho ngành du lịch, thể thao và ngoại giao quốc gia.</p><div class="prog-arrow">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR VALUE -->
+<section class="sponsor-val" id="sponsor">
+  <div class="container">
+    <div class="val-header">
+      <div class="reveal">
+        <div class="sec-label">Giá Trị Cho Đối Tác Đồng Hành</div>
+        <h2 class="sec-title">Khi Quý Vị <em class="ip">Đồng Hành</em><br>Cùng Vietnam Legends</h2>
+      </div>
+      <div class="reveal"><p class="sec-intro" style="margin:0">Tài trợ Vietnam Legends Festival 2026 không chỉ là một quyết định marketing — đó là sự đầu tư chiến lược vào thương hiệu, mạng lưới và vị thế quốc tế của doanh nghiệp quý vị.</p></div>
+    </div>
+    <div class="val-grid">
+      <div class="vc reveal">
+        <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8Z"/></svg></div>
+        <h3>Nâng Tầm Thương Hiệu</h3>
+        <p>Định vị doanh nghiệp ở phân khúc cao nhất của thị trường, sánh ngang các thương hiệu toàn cầu thông qua sự hiện diện tại sự kiện golf đẳng cấp quốc tế.</p>
+      </div>
+      <div class="vc reveal">
+        <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="7" r="3"/><path d="M21 21v-1a4 4 0 0 0-3-3.85"/></svg></div>
+        <h3>Tiếp Cận HNWI & C-Level</h3>
+        <p>Kết nối trực tiếp với mạng lưới cá nhân giá trị cao, lãnh đạo C-Level, Chairman, Founder của các tập đoàn hàng đầu Việt Nam và quốc tế.</p>
+      </div>
+      <div class="vc feat reveal">
+        <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Hệ Sinh Thái Quốc Tế Dài Hạn</h3>
+        <p>Vượt ngoài khuôn khổ một giải đấu — trở thành thành viên cốt lõi của Vietnam Legends Society, tiếp cận hệ sinh thái 3 trung tâm kinh tế thế giới: Trung Đông · Châu Âu · ASEAN. Mở ra cơ hội đầu tư xuyên suốt 8 ngành chiến lược trong nhiều năm tới.</p>
+      </div>
+      <div class="vc reveal">
+        <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Networking Riêng Tư</h3>
+        <p>Truy cập các sự kiện đóng kín: Legends Table, Private Dialogue, Gala Dinner — nơi những mối quan hệ chiến lược được hình thành trong không gian thân mật và tinh tế.</p>
+      </div>
+      <div class="vc reveal">
+        <div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+        <h3>Giá Trị PR & Truyền Thông</h3>
+        <p>Hiện diện trên 205M+ khán giả TV toàn cầu/năm, top #1 YouTube, và mạng lưới truyền thông quốc tế của European Tour Group và Legends Tour.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA EXPOSURE -->
+<section class="media-exp">
+  <div class="container">
+    <div class="media-grid">
+      <div class="reveal">
+        <div class="sec-label">Truyền Thông & Hiện Diện Quốc Tế</div>
+        <h2 class="sec-title">Tiếng Nói Của Quý Vị<br><em class="ip">Vang Xa Toàn Cầu</em></h2>
+        <div class="media-content">
+          <p>Thương hiệu của quý vị sẽ xuất hiện trên các kênh truyền thông danh giá nhất thế giới — từ phát sóng truyền hình quốc tế đến mạng lưới đối tác toàn cầu của European Tour Group.</p>
+          <p>Mỗi khoảnh khắc của giải đấu là cơ hội để thương hiệu quý vị kết nối với 205 triệu khán giả thuộc tầng lớp tinh hoa khắp năm châu.</p>
+        </div>
+        <div class="media-stats">
+          <div class="ms"><div class="bn">205M+</div><div class="dc">Tiếp cận TV toàn cầu mỗi năm · Top #1 YouTube</div></div>
+          <div class="ms"><div class="bn">12M+</div><div class="dc">Khách hàng Staysure — bảo hiểm du lịch lớn nhất UK & Châu Âu</div></div>
+          <div class="ms"><div class="bn">3</div><div class="dc">Hub kinh tế kết nối · Trung Đông · Châu Âu · ASEAN</div></div>
+          <div class="ms"><div class="bn">80+</div><div class="dc">Quốc gia tiếp nhận tín hiệu truyền hình quốc tế</div></div>
+        </div>
+      </div>
+      <div class="reach reveal">
+        <div class="rc"></div><div class="rc"></div><div class="rc"></div><div class="rc"></div>
+        <div class="reach-c"><div class="big">205M+</div><div class="lbl">Global Reach</div></div>
+        <div class="rdot" style="top:18%;left:28%"></div>
+        <div class="rdot" style="top:32%;left:72%"></div>
+        <div class="rdot" style="top:62%;left:22%"></div>
+        <div class="rdot" style="top:72%;left:66%"></div>
+        <div class="rdot" style="top:44%;left:50%;background:var(--wh)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELITE NETWORK -->
+<section class="elite-net" id="network">
+  <div class="container">
+    <div class="net-header reveal">
+      <div class="sec-label">Mạng Lưới Tinh Hoa</div>
+      <h2 class="sec-title">Cộng Đồng <em class="ip">Lãnh Đạo Toàn Cầu</em></h2>
+      <p class="sec-intro" style="margin:0 auto">Vietnam Legends Society quy tụ những nhân vật có ảnh hưởng nhất trong giới golf, kinh doanh và đầu tư quốc tế.</p>
+    </div>
+    <div class="net-grid">
+      <div class="nc reveal"><div class="nc-avatar">PH</div><h4>Phil Harrison</h4><div class="role">CEO · Legends Tour</div><div class="ach">Lãnh đạo Legends Tour thuộc European Tour Group</div></div>
+      <div class="nc reveal"><div class="nc-avatar">ET</div><h4>Eric Trump</h4><div class="role">EVP · Trump Organization</div><div class="ach">Trump International Golf Links — đối tác chiến lược toàn cầu</div></div>
+      <div class="nc reveal"><div class="nc-avatar">RH</div><h4>Ryan Howsam</h4><div class="role">Chairman · Staysure Group</div><div class="ach">12M+ khách hàng · Bảo hiểm du lịch hàng đầu UK & Châu Âu</div></div>
+      <div class="nc reveal"><div class="nc-avatar">CM</div><h4>Colin Montgomerie</h4><div class="role">Golf Legend · Ryder Cup Captain</div><div class="ach">8 lần Order of Merit · Huyền thoại European Tour</div></div>
+    </div>
+    <div style="margin-bottom:16px"><div class="sec-label">Đối Tác Chiến Lược</div></div>
+    <div class="net-row2 reveal">
+      <div class="nc"><div class="nc-avatar">SM</div><h4>Sarah Malone</h4><div class="role">Executive Vice President<br>Trump International Golf Links, Scotland</div><div class="ach">Giám đốc điều hành cấp cao phụ trách Trump International Golf Links tại Scotland — một trong những sân golf danh giá nhất Vương quốc Anh.</div></div>
+      <div class="nc"><div class="nc-avatar">PM</div><h4>Paul McGinley</h4><div class="role">Golf Legend · Ryder Cup Captain 2014</div><div class="ach">Captained Europe to Ryder Cup victory · One of golf's greatest ambassadors</div></div>
+      <div class="nc"><div class="nc-avatar">JD</div><h4>John Daly</h4><div class="role">Golf Legend · 2× Major Champion</div><div class="ach">The Open Championship & PGA Championship winner · Global fan icon</div></div>
+    </div>
+    <div class="legends-list reveal">
+      <div class="ll-label">Cùng Với Các Huyền Thoại Đẳng Cấp Thế Giới</div>
+      <div class="ll-names">Ian Woosnam <span>·</span> Paul Lawrie <span>·</span> Peter Baker <span>·</span> & Many More Legends</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="container">
+    <div class="exp-header reveal">
+      <div class="sec-label">Trải Nghiệm Sự Kiện</div>
+      <h2 class="sec-title">Sáu Ngày <em class="ip">Đẳng Cấp Quốc Tế</em></h2>
+      <p class="sec-intro" style="margin:0 auto">Một hành trình được thiết kế tỉ mỉ — từ tournament đẳng cấp đến những cuộc đối thoại riêng tư định hình tương lai.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-c"><div class="dt">Ngày 1 · 11/08/2026</div><h4>Welcome Reception</h4><p>Lễ đón tiếp riêng tư dành cho các huyền thoại quốc tế và đối tác chiến lược, mở màn hành trình 6 ngày.</p></div><div class="tl-marker">01</div></div>
+      <div class="tl-item reveal"><div class="tl-marker">02</div><div class="tl-c"><div class="dt">Ngày 2 · 12/08/2026</div><h4>Pro-Am Tournament</h4><p>Các lãnh đạo doanh nghiệp chơi cùng huyền thoại — cơ hội networking độc đáo trên sân golf đẳng cấp.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-c"><div class="dt">Ngày 3 · 13/08/2026</div><h4>Legends Dialogue & Capital Circle</h4><p>Đối thoại chiến lược cấp cao về xu hướng đầu tư toàn cầu — Family Office và HNWI từ ba châu lục.</p></div><div class="tl-marker">03</div></div>
+      <div class="tl-item reveal"><div class="tl-marker">04</div><div class="tl-c"><div class="dt">Ngày 4 · 14/08/2026</div><h4>Championship Round I</h4><p>Vòng thi đấu chính thức của Legends Tour — phát sóng quốc tế trên 80+ quốc gia.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-c"><div class="dt">Ngày 5 · 15/08/2026</div><h4>Championship Round II & Gala Dinner</h4><p>Đêm Gala đẳng cấp với khách mời quốc tế, lễ trao giải và những kết nối định hình hệ sinh thái.</p></div><div class="tl-marker">05</div></div>
+      <div class="tl-item reveal"><div class="tl-marker">06</div><div class="tl-c"><div class="dt">Ngày 6 · 16/08/2026</div><h4>The Legends Table & Farewell</h4><p>Private leadership tea — không gian giới hạn cho những cam kết hợp tác dài hạn, khép lại hành trình.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="ecosystem">
+  <div class="container">
+    <div class="eco-header reveal">
+      <div class="sec-label">Hệ Sinh Thái Toàn Cầu</div>
+      <h2 class="sec-title">Kết Nối Việt Nam Với<br><em class="ip">Ba Trung Tâm Kinh Tế Thế Giới</em></h2>
+      <p class="sec-intro" style="margin:0 auto;color:rgba(255,255,255,.72)">Golf diplomacy là cầu nối trực tiếp giữa lãnh đạo Việt Nam và các hub vốn, thương mại toàn cầu — mở ra 8 ngành cơ hội chiến lược.</p>
+    </div>
+    <div class="hubs reveal">
+      <div class="hub"><div class="hub-c"><div class="hub-nm">Dubai</div></div><div class="hub-reg">Middle East & Gulf</div></div>
+      <div class="hub-line"></div>
+      <div class="hub center"><div class="hub-c"><div class="hub-nm">Vietnam</div></div><div class="hub-reg">Hub Center · ASEAN</div></div>
+      <div class="hub-line"></div>
+      <div class="hub"><div class="hub-c"><div class="hub-nm">Europe</div></div><div class="hub-reg">Legends Origin</div></div>
+    </div>
+    <div>
+      <h3 class="ind-title reveal">Tám Ngành <span>Legends Tour Mở Cánh Cửa</span></h3>
+      <div class="ind-grid">
+        <div class="ind reveal"><div class="ind-n">01</div><h4>Năng Lượng Tái Tạo</h4><p>Điện mặt trời · Điện gió · Hydro xanh</p></div>
+        <div class="ind reveal"><div class="ind-n">02</div><h4>BĐS & Hạ Tầng</h4><p>Bất động sản sân golf tăng giá trị +10–22%</p></div>
+        <div class="ind reveal"><div class="ind-n">03</div><h4>Du Lịch Cao Cấp</h4><p>$2,200/chuyến · Khách HNWI quốc tế</p></div>
+        <div class="ind reveal"><div class="ind-n">04</div><h4>Halal & Nông Nghiệp</h4><p>Công nghệ cao · Thị trường Dubai – ASEAN</p></div>
+        <div class="ind reveal"><div class="ind-n">05</div><h4>Logistics & Cảng Biển</h4><p>Chuỗi cung ứng China+1</p></div>
+        <div class="ind reveal"><div class="ind-n">06</div><h4>Công Nghệ</h4><p>Fintech · Proptech · AgriTech</p></div>
+        <div class="ind reveal"><div class="ind-n">07</div><h4>Y Tế & Dược Phẩm</h4><p>Trung tâm du lịch chăm sóc sức khỏe</p></div>
+        <div class="ind reveal"><div class="ind-n">08</div><h4>FMCG Cao Cấp</h4><p>Mạng lưới cao cấp ASEAN</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER + FORM -->
+<section class="cta-sec" id="contact">
+  <div class="cta-banner">
+    <img src="https://picsum.photos/seed/golftwilight/1920/340" alt="Golf at sunset">
+    <div class="cta-banner-overlay">
+      <blockquote>"Every great partnership begins on the fairway — where strategy meets character."</blockquote>
+    </div>
+  </div>
+  <div class="cta-inner">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="reveal">
+          <div class="sec-label">Lời Mời Đồng Hành</div>
+          <h2 class="cta-content">Hãy Cùng Kiến Tạo<br><span class="it">Di Sản Quốc Gia</span></h2>
+          <p style="font-size:16px;color:var(--tm);line-height:1.82;margin-bottom:24px">Đây là khoảnh khắc lịch sử để doanh nghiệp Việt Nam có mặt trên bản đồ golf diplomacy thế giới — vị thế mà Dubai đã xây dựng trong 20 năm, chúng ta có thể đạt được trong một thập kỷ tới.</p>
+          <p style="font-size:16px;color:var(--tm);line-height:1.82;margin-bottom:24px">Vietnam Legends Society chào đón quý vị với tư cách Đối tác Đồng hành — không chỉ là sponsor, mà là một thành viên của cộng đồng kiến tạo tương lai.</p>
+          <ul class="cta-feats">
+            <li>Tài trợ Vietnam Legends Festival 2026 (11–16/08/2026)</li>
+            <li>Tư cách thành viên Vietnam Legends Society</li>
+            <li>Kết nối Global Investor Network</li>
+            <li>Golf Priority Access & Membership</li>
+            <li>Định hướng chiến lược Festival & Society Roadmap</li>
+            <li>Cơ hội đầu tư 8 ngành chiến lược</li>
+          </ul>
+        </div>
+        <div class="cta-form reveal">
+          <h3>Đăng Ký Tư Vấn Riêng</h3>
+          <p class="fsub">Đội ngũ Vietnam Legends Society sẽ liên hệ trong vòng 24 giờ để trao đổi chi tiết về gói đồng hành phù hợp.</p>
+          <div class="fg"><label>Họ Và Tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
+          <div class="fg"><label>Chức Vụ</label><input type="text" placeholder="Chairman / Founder / CEO"></div>
+          <div class="fg"><label>Doanh Nghiệp</label><input type="text" placeholder="Tên công ty / tập đoàn"></div>
+          <div class="fg"><label>Email Doanh Nghiệp</label><input type="email" placeholder="email@company.com"></div>
+          <div class="fg"><label>Số Điện Thoại</label><input type="tel" placeholder="+84 ..."></div>
+          <div class="fg"><label>Hình Thức Quan Tâm</label>
+            <select>
+              <option>Đối tác Đồng hành Chiến lược</option>
+              <option>Tài trợ Vietnam Legends Festival 2026</option>
+              <option>Thành viên Vietnam Legends Society</option>
+              <option>Tư vấn riêng</option>
+            </select>
+          </div>
+          <div class="fg"><label>Lời Nhắn (Tuỳ Chọn)</label><textarea placeholder="Chia sẻ thêm về mối quan tâm của quý vị..."></textarea></div>
+          <button class="form-sub" onclick="handleSubmit()">Gửi Đăng Ký</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fc">
+    <div class="ft">
+      <div class="fq">"Great legacies begin with meaningful relationships."<br><em style="color:var(--gd);font-size:.72em">Mọi di sản vĩ đại bắt đầu từ những mối quan hệ ý nghĩa.</em></div>
+      <div class="ftags">Leadership <span>·</span> Capital <span>·</span> Golf <span>·</span> Legacy</div>
+    </div>
+    <div class="fb">
+      <div class="fbrand"><div class="logo">VIETNAM <span>LEGENDS</span> SOCIETY</div><p>Cộng đồng tinh hoa kết nối lãnh đạo Việt Nam với mạng lưới đầu tư, thương mại và ngoại giao golf toàn cầu. Kiến tạo di sản qua ngoại giao Golf đỉnh cao.</p></div>
+      <div class="fcol"><h5>Sự Kiện</h5><p>Vietnam Legends Festival</p><p>11 – 16 / 08 / 2026</p><p>Việt Nam</p></div>
+      <div class="fcol"><h5>Liên Hệ</h5><a href="#">contact@vietnamlegends.vn</a><a href="#">+84 ...</a><a href="#">Press & Partnerships</a></div>
+    </div>
+    <div class="fcopy">© 2026 VIETNAM LEGENDS SOCIETY · ALL RIGHTS RESERVED · IN PARTNERSHIP WITH LEGENDS TOUR & EUROPEAN TOUR GROUP</div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+
+// Hero background via picsum
+const heroBg=document.getElementById('heroBg');
+heroBg.style.cssText+=`background-image:url('https://picsum.photos/seed/golfaerial/1920/1080');background-size:cover;background-position:center 40%`;
+window.addEventListener('scroll',()=>{
+  heroBg.style.transform=`translateY(${window.scrollY*0.22}px)`;
+});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// Form submit
+function handleSubmit(){alert('Cảm ơn quý vị đã quan tâm đến Vietnam Legends Society.\nĐội ngũ của chúng tôi sẽ liên hệ trong vòng 24 giờ.');}
+</script>
+</body>
+</html>
