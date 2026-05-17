@@ -1,1 +1,149 @@
+backend:
+  name: git-gateway
+  branch: main          # nếu repo dùng "master" thì đổi thành master
 
+media_folder: "images/uploads"     # ảnh upload sẽ lưu vào đây
+public_folder: "/images/uploads"   # đường dẫn ảnh trên website
+
+# Ngôn ngữ giao diện quản trị
+locale: "vi"
+
+collections:
+
+  # ─────────────────────────────────────────
+  # SECTION 1: NỘI DUNG CHÍNH
+  # ─────────────────────────────────────────
+  - name: "trang-chu"
+    label: "🏠 Nội dung trang chủ"
+    files:
+
+      - label: "Hero — Màn hình đầu tiên"
+        name: "hero"
+        file: "_data/content.json"
+        fields:
+          - label: "Badge (dòng nhỏ trên cùng)"
+            name: "badge"
+            widget: "string"
+            hint: "Ví dụ: Vietnam Legend Championship · 11 – 16 / 08 / 2026"
+          - label: "Tiêu đề dòng 1"
+            name: "title1"
+            widget: "string"
+            hint: "Ví dụ: Nơi Lãnh Đạo"
+          - label: "Tiêu đề dòng 2 (màu vàng, in nghiêng)"
+            name: "title2"
+            widget: "string"
+            hint: "Ví dụ: Trở Thành Huyền Thoại"
+          - label: "Mô tả ngắn dưới tiêu đề"
+            name: "subtitle"
+            widget: "text"
+          - label: "Thông tin 1 (giữa trang)"
+            name: "meta1"
+            widget: "string"
+            hint: "Ví dụ: 60 Huyền Thoại Golf"
+          - label: "Thông tin 2"
+            name: "meta2"
+            widget: "string"
+            hint: "Ví dụ: 205M+ Khán Giả Toàn Cầu"
+          - label: "Thông tin 3"
+            name: "meta3"
+            widget: "string"
+            hint: "Ví dụ: 6 Ngày Đẳng Cấp"
+
+  # ─────────────────────────────────────────
+  # SECTION 2: THỐNG KÊ VIỆT NAM (4 thẻ)
+  # ─────────────────────────────────────────
+  - name: "thong-ke"
+    label: "📊 Thống kê Việt Nam"
+    folder: "_data/stats"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Số liệu lớn", name: "number", widget: "string", hint: "Ví dụ: 9 hoặc 279%"}
+      - {label: "Tiêu đề", name: "title", widget: "string"}
+      - {label: "Nguồn trích dẫn", name: "source", widget: "string", hint: "Ví dụ: World Golf Awards · 2017–2025"}
+
+  # ─────────────────────────────────────────
+  # SECTION 3: SÁU CHƯƠNG TRÌNH
+  # ─────────────────────────────────────────
+  - name: "chuong-trinh"
+    label: "🎯 Sáu Chương trình"
+    folder: "_data/programs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Số thứ tự", name: "number", widget: "string", hint: "Ví dụ: 01"}
+      - {label: "Tên chương trình", name: "title", widget: "string"}
+      - {label: "Mô tả", name: "description", widget: "text"}
+
+  # ─────────────────────────────────────────
+  # SECTION 4: NHÂN VẬT & ĐỐI TÁC
+  # ─────────────────────────────────────────
+  - name: "nhan-vat"
+    label: "👤 Nhân vật & Đối tác"
+    folder: "_data/people"
+    create: true
+    slug: "{{name}}"
+    fields:
+      - {label: "Tên đầy đủ", name: "name", widget: "string"}
+      - {label: "Chức vụ / Tổ chức", name: "role", widget: "string"}
+      - {label: "Mô tả thành tích", name: "achievement", widget: "text"}
+      - {label: "Chữ viết tắt hiển thị (2 chữ)", name: "initials", widget: "string", hint: "Ví dụ: CM cho Colin Montgomerie"}
+      - label: "Loại"
+        name: "type"
+        widget: "select"
+        options:
+          - {label: "Huyền thoại Golf", value: "legend"}
+          - {label: "Đối tác chiến lược", value: "partner"}
+          - {label: "Ban tổ chức", value: "organizer"}
+
+  # ─────────────────────────────────────────
+  # SECTION 5: LỊCH TRÌNH 6 NGÀY
+  # ─────────────────────────────────────────
+  - name: "lich-trinh"
+    label: "📅 Lịch trình 6 ngày"
+    folder: "_data/timeline"
+    create: false
+    slug: "day-{{number}}"
+    fields:
+      - {label: "Ngày số", name: "number", widget: "string", hint: "Ví dụ: 01"}
+      - {label: "Nhãn ngày", name: "date", widget: "string", hint: "Ví dụ: Ngày 1 · 11/08/2026"}
+      - {label: "Tên hoạt động", name: "title", widget: "string"}
+      - {label: "Mô tả", name: "description", widget: "text"}
+
+  # ─────────────────────────────────────────
+  # SECTION 6: THÔNG TIN LIÊN HỆ & FOOTER
+  # ─────────────────────────────────────────
+  - name: "lien-he"
+    label: "📬 Liên hệ & Footer"
+    files:
+      - label: "Thông tin liên hệ"
+        name: "contact"
+        file: "_data/contact.json"
+        fields:
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Số điện thoại", name: "phone", widget: "string"}
+          - {label: "Địa chỉ / Địa điểm", name: "address", widget: "string"}
+          - {label: "Câu quote footer", name: "footer_quote", widget: "text"}
+
+  # ─────────────────────────────────────────
+  # SECTION 7: HÌNH ẢNH
+  # ─────────────────────────────────────────
+  - name: "hinh-anh"
+    label: "🖼️ Hình ảnh"
+    files:
+      - label: "Quản lý ảnh các section"
+        name: "images"
+        file: "_data/images.json"
+        fields:
+          - {label: "Ảnh Hero (background)", name: "hero", widget: "image"}
+          - {label: "Ảnh Strip 1 — Legends Tour", name: "strip1", widget: "image"}
+          - {label: "Ảnh Strip 2 — Business", name: "strip2", widget: "image"}
+          - {label: "Ảnh Strip 3 — Gala", name: "strip3", widget: "image"}
+          - {label: "Ảnh Tour Visual", name: "tour", widget: "image"}
+          - {label: "Ảnh Panorama", name: "panorama", widget: "image"}
+          - {label: "Ảnh Gallery 1 — Clubhouse", name: "gallery1", widget: "image"}
+          - {label: "Ảnh Gallery 2 — Ceremony", name: "gallery2", widget: "image"}
+          - {label: "Ảnh Gallery 3 — Networking", name: "gallery3", widget: "image"}
+          - {label: "Ảnh Gallery 4 — Venue", name: "gallery4", widget: "image"}
+          - {label: "Ảnh Gallery 5 — Meeting", name: "gallery5", widget: "image"}
+          - {label: "Ảnh CTA Banner", name: "cta_banner", widget: "image"}
