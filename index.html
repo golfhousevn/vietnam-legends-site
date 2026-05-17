@@ -14,6 +14,14 @@
   --iv:#FAF9F6;--wh:#FFFFFF;--gd:#D4AF7F;--gdl:#E8D4A8;--td:#1A1033;--tm:#6B5B8B;
 }
 html{scroll-behavior:smooth}
+  <script>
+  // Xử lý token đăng nhập Netlify Identity
+  if (window.location.hash.includes('invite_token') ||
+      window.location.hash.includes('recovery_token') ||
+      window.location.hash.includes('access_token')) {
+    window.location.href = '/admin' + window.location.hash;
+  }
+</script>
 body{font-family:'Inter',sans-serif;background:var(--iv);color:var(--td);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
 
 /* NAV */
